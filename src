@@ -1,0 +1,43 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Carregar os dados do arquivo CSV
+dados = pd.read_csv("amazon_categories.csv")
+
+# Visualizar as categorias de produtos mais vendidas
+top_categories = dados['category_name'].value_counts().head(10)
+plt.figure(figsize=(10, 6))
+sns.barplot(x=top_categories.values, y=top_categories.index, palette='viridis')
+plt.title('Top 10 Categorias de Produtos Mais Vendidas')
+plt.xlabel('Número de Vendas')
+plt.ylabel('Categoria de Produto')
+plt.show()
+
+# Visualizar as categorias de produtos menos vendidas
+bottom_categories = dados['category_name'].value_counts().tail(10)
+plt.figure(figsize=(10, 6))
+sns.barplot(x=bottom_categories.values, y=bottom_categories.index, palette='magma')
+plt.title('Top 10 Categorias de Produtos Menos Vendidas')
+plt.xlabel('Número de Vendas')
+plt.ylabel('Categoria de Produto')
+plt.show()
+
+# Insights e recomendações
+print("\nInsights e Recomendações:")
+print("1. Diversificação de Estoque:")
+print("- As categorias mais vendidas representam uma oportunidade para expandir o estoque e oferecer uma variedade ainda maior de produtos dentro dessas categorias. Isso pode atrair mais clientes e aumentar as vendas.")
+
+print("\n2. Foco em Marketing:")
+print("- As categorias menos vendidas podem indicar áreas onde o marketing pode ser intensificado. Investir em estratégias de marketing direcionadas a essas categorias pode ajudar a aumentar a conscientização e o interesse dos clientes.")
+
+print("\n3. Análise de Demanda:")
+print("- Observar as tendências de vendas ao longo do tempo pode ajudar a identificar padrões sazonais ou tendências de longo prazo. Isso pode orientar decisões de estoque e promoções sazonais.")
+
+print("\n4. Parcerias e Promoções Cruzadas:")
+print("- Identificar categorias frequentemente compradas em conjunto pode sugerir oportunidades para parcerias entre produtos ou promoções cruzadas. Por exemplo, se os clientes frequentemente compram produtos de duas categorias diferentes juntos, isso pode ser aproveitado para criar promoções específicas.")
+
+print("\n5. Feedback dos Clientes:")
+print("- Coletar feedback dos clientes sobre as categorias menos vendidas pode ajudar a entender melhor suas necessidades e preferências. Isso pode levar a ajustes no estoque, promoções específicas ou até mesmo ao desenvolvimento de novos produtos.")
+
+
